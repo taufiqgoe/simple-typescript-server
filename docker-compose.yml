@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+  node-restful-api:
+    container_name: node-restful-api
+    image: node-restful-api
+    ports:
+      - 8080:8080
+    environment:
+      DATABASE_HOST: node-restful-api-postgres
+      DATABASE_PORT: 5432
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_NAME: restful-api
+
+  node-restful-api-postgres:
+    container_name: "node-restful-api-postgres"
+    image: postgres:12-alpine
+    ports:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: restful-api
